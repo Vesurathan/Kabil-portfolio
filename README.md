@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Developer Portfolio
+
+A modern, professional portfolio website for a software engineer, built with **Next.js (App Router)**, **Tailwind CSS v4**, and **DaisyUI v5**. All content is hard-coded sample data — no backend required.
+
+## Features
+
+- **Black + dark-blue theme** with a matching clean light theme
+- **Dark / light mode toggle** with `localStorage` persistence and no flash-on-load
+- Sticky glassmorphism navbar with mobile menu
+- Animated hero with gradient text, aurora blobs, and a floating profile card
+- Sections: Hero, About, Skills (with proficiency bars), Projects, Experience timeline, Services, Testimonials, and a Contact form
+- Scroll-reveal animations (respects `prefers-reduced-motion`)
+- Fully responsive and accessible (semantic HTML, ARIA labels, keyboard-friendly)
+- Contact form composes a `mailto:` link (no backend needed)
+
+## Tech Stack
+
+| Layer    | Choice                          |
+| -------- | ------------------------------- |
+| Framework| Next.js 16 (App Router, TS)     |
+| Styling  | Tailwind CSS v4                 |
+| UI Kit   | DaisyUI v5                      |
+| Fonts    | Geist Sans / Geist Mono         |
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # start dev server at http://localhost:3000
+npm run build    # production build
+npm run start    # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Customizing Content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All personal data lives in a single file — edit it to make the site yours:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/data/portfolio.ts
+```
 
-## Learn More
+It contains your profile, social links, stats, skills, projects, experience,
+services, and testimonials. No other files need to change for content updates.
 
-To learn more about Next.js, take a look at the following resources:
+## Theming
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The two custom DaisyUI themes (`nightblue` and `dayblue`) are defined in:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/app/globals.css
+```
 
-## Deploy on Vercel
+Adjust the `--color-*` variables there to tweak the palette.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├─ app/
+│  ├─ globals.css      # Tailwind + DaisyUI themes + animations
+│  ├─ layout.tsx       # Root layout, metadata, no-flash theme script
+│  └─ page.tsx         # Composes all sections
+├─ components/
+│  ├─ Icons.tsx        # Inline SVG icon set
+│  ├─ Navbar.tsx       # Sticky nav + mobile menu
+│  ├─ Footer.tsx
+│  ├─ ThemeToggle.tsx  # Dark/light switch
+│  ├─ Reveal.tsx       # Scroll-reveal wrapper
+│  ├─ SectionHeading.tsx
+│  └─ sections/        # Hero, About, Skills, Projects, Experience, Services, Contact
+└─ data/
+   └─ portfolio.ts     # All hard-coded content
+```

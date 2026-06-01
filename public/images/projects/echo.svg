@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Echo Realtime Chat thumbnail placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1120"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#ffffff" opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <rect width="800" height="450" fill="url(#dots)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.7" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" transform="translate(400 175)">
+    <path d="M-70 -34 -110 6 -70 46"/>
+    <path d="M70 -34 110 6 70 46"/>
+    <path d="M-14 70 22 -70"/>
+  </g>
+  <text x="400" y="330" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#ffffff">Echo Realtime Chat</text>
+  <text x="400" y="372" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#ffffff" opacity="0.75">Add project image</text>
+</svg>

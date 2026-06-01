@@ -1,26 +1,204 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@plugin "daisyui" {
+  themes: false;
+}
+
+/* ----------------------------------------------------------------------------
+   Custom DaisyUI themes
+   - "nightblue": black + dark-blue dark theme (default)
+   - "dayblue":   clean light theme with deep-blue accents
+---------------------------------------------------------------------------- */
+
+@plugin "daisyui/theme" {
+  name: "nightblue";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: #060912;
+  --color-base-200: #0b1120;
+  --color-base-300: #131c33;
+  --color-base-content: #dbe4f5;
+
+  --color-primary: #3b82f6;
+  --color-primary-content: #f8fafc;
+  --color-secondary: #1d4ed8;
+  --color-secondary-content: #eff6ff;
+  --color-accent: #38bdf8;
+  --color-accent-content: #021018;
+  --color-neutral: #111a2e;
+  --color-neutral-content: #cbd5e1;
+
+  --color-info: #38bdf8;
+  --color-info-content: #021018;
+  --color-success: #34d399;
+  --color-success-content: #022c22;
+  --color-warning: #fbbf24;
+  --color-warning-content: #1c1402;
+  --color-error: #f87171;
+  --color-error-content: #2a0606;
+
+  --radius-selector: 1rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "dayblue";
+  default: false;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: #ffffff;
+  --color-base-200: #f1f5f9;
+  --color-base-300: #e2e8f0;
+  --color-base-content: #0b1120;
+
+  --color-primary: #1d4ed8;
+  --color-primary-content: #f8fafc;
+  --color-secondary: #1e3a8a;
+  --color-secondary-content: #eff6ff;
+  --color-accent: #2563eb;
+  --color-accent-content: #f8fafc;
+  --color-neutral: #0b1120;
+  --color-neutral-content: #e2e8f0;
+
+  --color-info: #0284c7;
+  --color-info-content: #f0f9ff;
+  --color-success: #16a34a;
+  --color-success-content: #f0fdf4;
+  --color-warning: #d97706;
+  --color-warning-content: #fffbeb;
+  --color-error: #dc2626;
+  --color-error-content: #fef2f2;
+
+  --radius-selector: 1rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-aurora: aurora 18s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Smooth, theme-aware transitions when toggling between light/dark */
+:root,
+[data-theme] {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ----------------------------------------------------------------------------
+   Reveal-on-scroll utility (paired with IntersectionObserver in JS)
+---------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Decorative animated background blobs */
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  animation: aurora 18s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Subtle dotted grid backdrop */
+.grid-backdrop {
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--color-base-content) 14%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 60%, transparent 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(
+    120deg,
+    var(--color-primary),
+    var(--color-accent)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes aurora {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(40px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-30px, 20px) scale(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .aurora-blob,
+  .animate-float {
+    animation: none;
+  }
 }

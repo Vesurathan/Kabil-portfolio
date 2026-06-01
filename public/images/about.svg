@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="760" viewBox="0 0 640 760" role="img" aria-label="About photo placeholder">
+  <defs>
+    <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1120"/>
+      <stop offset="0.5" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#ffffff" opacity="0.12"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="760" rx="32" fill="url(#ag)"/>
+  <rect width="640" height="760" rx="32" fill="url(#dots)"/>
+  <g fill="#ffffff" opacity="0.92">
+    <circle cx="320" cy="300" r="96"/>
+    <path d="M160 600c0-88 72-148 160-148s160 60 160 148z"/>
+  </g>
+  <text x="320" y="690" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="600" fill="#ffffff" opacity="0.92">Add your photo</text>
+</svg>
