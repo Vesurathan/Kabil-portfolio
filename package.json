@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "setup": "node scripts/gen-placeholders.mjs && next dev",
+    "placeholders": "node scripts/gen-placeholders.mjs"
   },
   "dependencies": {
     "daisyui": "^5.5.20",

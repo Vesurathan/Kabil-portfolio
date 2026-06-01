@@ -24,12 +24,38 @@ A modern, professional portfolio website for a software engineer, built with **N
 
 ## Getting Started
 
+### Quick start (one command)
+
+After cloning, just run the setup script. It checks your Node.js version,
+installs all dependencies, generates placeholder images if needed, and starts
+the dev server at http://localhost:3000.
+
+**macOS / Linux**
+
 ```bash
-npm install
+./setup.sh
+```
+
+**Windows**
+
+```bat
+setup.bat
+```
+
+> Tip: pass `--build` (e.g. `./setup.sh --build`) to create and serve a
+> production build instead of the dev server.
+
+### Manual / npm scripts
+
+```bash
+npm install      # install dependencies
 npm run dev      # start dev server at http://localhost:3000
 npm run build    # production build
 npm run start    # serve the production build
+npm run setup    # generate placeholders + start dev server
 ```
+
+**Prerequisite:** Node.js 18.18 or newer ([download](https://nodejs.org)).
 
 ## Customizing Content
 
